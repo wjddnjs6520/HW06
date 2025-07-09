@@ -78,12 +78,10 @@ void AMovableActor::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	if (MoveDistance < MMoveDistance) {
-		//같은 거리를 움직이기 위해서 델타 타임 사용
-		FVector NewLocation = GetActorLocation() + MoveDirection * MoveSpeed * DeltaTime;
 		//이동 거리 계산
 		MoveDistance += (MoveDirection * MoveSpeed * DeltaTime).Size();
 		//이동
-		SetActorLocation(NewLocation);
+		AddActorWorldOffset(MoveDirection * MoveSpeed * DeltaTime);
 	}
 	else {
 		MoveDirection *= (-1);
