@@ -34,7 +34,7 @@ void AMovableActor::BeginPlay()
 	MMoveDistance = FMath::RandRange(MinMoveDistance, MaxMoveDistance);
 	StartLocation = GetActorLocation();
 	if (HideFuntion) {
-		// 5초마다 HideActor 호출
+		// n초마다 HideActor 호출
 		GetWorld()->GetTimerManager().SetTimer(
 			HideTimerHandle,
 			this,
@@ -52,7 +52,7 @@ void AMovableActor::HideActor()
 	// 액터 숨김
 	SetActorHiddenInGame(true);
 	SetActorEnableCollision(false);
-	// 2초 뒤 ShowActor 호출 타이머 설정
+	// n초 뒤 ShowActor 호출 타이머 설정
 	GetWorld()->GetTimerManager().SetTimer(
 		ShowTimerHandle,
 		this,
